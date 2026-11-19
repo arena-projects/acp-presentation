@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Push-Token – Coding Challenges</title>
+  <script>try{var t=JSON.parse(localStorage.getItem("cc.theme"));if(t&&t!=="system")document.documentElement.dataset.theme=t}catch(e){}</script>
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+</head>
+<body data-page="token">
+  <div id="site-header"></div>
+  <main id="main" tabindex="-1">
+    <div class="page-head">
+      <div class="page-head-main">
+        <h1>Push-Token</h1>
+        <p class="lead">Mit dem Push-Token meldest du dich beim Einreichen per <code>git push</code> an. Du hast höchstens ein Token;
+          ein neues ersetzt das bisherige.</p>
+      </div>
+    </div>
+    <div class="notices" id="token-scope"></div>
+    <div class="two-col">
+      <section class="card" id="token-state" aria-live="polite"></section>
+      <section class="card" aria-labelledby="h-usage">
+        <h2 id="h-usage">So verwendest du das Token</h2>
+        <ol>
+          <li>Beim ersten <code>git push</code> zu <code id="token-host"></code> fragt Git nach Zugangsdaten.</li>
+          <li>Als <strong>Benutzername</strong> gibst du <code>token</code> ein, als <strong>Passwort</strong> dein Push-Token.</li>
+          <li>Der Credential-Manager deines Systems kann das Token speichern, damit du es nicht jedes Mal eingeben musst.</li>
+        </ol>
+        <p class="small muted" style="margin:0">Nach dem Erzeugen eines neuen Tokens musst du den gespeicherten Eintrag aktualisieren. Ein Push mit
+          einem alten Token wird mit <code>remote: Ungültiges Push-Token</code> abgelehnt.</p>
+      </section>
+    </div>
+  </main>
+  <div id="site-footer"></div>
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/token.js"></script>
+</body>
+</html>

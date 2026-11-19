@@ -1,0 +1,117 @@
+/* Design-Tokens */
+:root {
+  color-scheme: light;
+  /* Flächen und Text */
+  --color-bg: #F6F8FB;
+  --color-surface: #FFFFFF;
+  --color-surface-2: #EDF1F7;
+  --color-border: #D5DAE3;
+  --color-border-strong: #7A8499;
+  --color-text: #141A2A;
+  --color-text-muted: #4A5468;
+
+  /* Aktionen und Marke */
+  --color-primary: #009EFF;
+  --color-primary-hover: #33B1FF;
+  --color-on-primary: #0B1020;
+  --color-link: #0072B8;
+  --color-secondary: #624AEF;
+  --color-secondary-hover: #4E36D9;
+  --color-on-secondary: #FFFFFF;
+  --color-secondary-text: #624AEF;
+  --color-highlight: #D743EB;
+  --color-on-highlight: #0B1020;
+  --color-highlight-text: #A61FBB;
+  --color-focus: #624AEF;
+  --color-danger-fill: #C0262D;
+  --color-on-danger: #FFFFFF;
+
+  /* Status: Text / Fläche */
+  --status-success: #146C31;  --status-success-bg: #E7F5EC;
+  --status-danger: #C0262D;   --status-danger-bg: #FCEBEC;
+  --status-warning: #975A00;  --status-warning-bg: #FDF3E1;
+  --status-info: #0072B8;     --status-info-bg: #E5F4FF;
+  --status-neutral: #4A5468;  --status-neutral-bg: #EDF1F7;
+
+  --gradient-brand: linear-gradient(90deg, #009EFF 0%, #624AEF 55%, #D743EB 100%);
+
+  /* Typografie */
+  --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: ui-monospace, "Cascadia Code", "SF Mono", Consolas, monospace;
+  --text-sm: 0.875rem;
+  --text-md: 1rem;
+  --text-h3: 1.1875rem;
+  --text-h2: 1.5rem;
+  --text-h1: 2rem;
+
+  /* Abstände */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+
+  /* Formen */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-pill: 999px;
+  --shadow-card: 0 1px 2px rgba(20, 26, 42, 0.06), 0 2px 8px rgba(20, 26, 42, 0.06);
+  --shadow-pop: 0 8px 24px rgba(20, 26, 42, 0.16);
+
+  --content-max: 1200px;
+  --header-h: 64px;
+  --transition: 150ms ease;
+}
+
+/* Dunkler Modus: folgt dem System; data-theme setzt nur die Demo-Leiste des Dummys */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --color-bg: #0B1020;
+    --color-surface: #141B2E;
+    --color-surface-2: #1D2640;
+    --color-border: #2C3756;
+    --color-border-strong: #6B7699;
+    --color-text: #E8ECF5;
+    --color-text-muted: #A3ACC2;
+    --color-link: #4DBDFF;
+    --color-secondary-text: #9D8CFF;
+    --color-highlight-text: #E57AF3;
+    --color-focus: #9D8CFF;
+    --color-danger-fill: #FF7A7F;
+    --color-on-danger: #0B1020;
+    --status-success: #4CC774;  --status-success-bg: #15291F;
+    --status-danger: #FF7A7F;   --status-danger-bg: #2E1A1E;
+    --status-warning: #F2B54A;  --status-warning-bg: #2B2415;
+    --status-info: #4DBDFF;     --status-info-bg: #132A40;
+    --status-neutral: #A3ACC2;  --status-neutral-bg: #1D2640;
+    --shadow-card: none;
+    --shadow-pop: 0 8px 24px rgba(0, 0, 0, 0.5);
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --color-bg: #0B1020;
+  --color-surface: #141B2E;
+  --color-surface-2: #1D2640;
+  --color-border: #2C3756;
+  --color-border-strong: #6B7699;
+  --color-text: #E8ECF5;
+  --color-text-muted: #A3ACC2;
+  --color-link: #4DBDFF;
+  --color-secondary-text: #9D8CFF;
+  --color-highlight-text: #E57AF3;
+  --color-focus: #9D8CFF;
+  --color-danger-fill: #FF7A7F;
+  --color-on-danger: #0B1020;
+  --status-success: #4CC774;  --status-success-bg: #15291F;
+  --status-danger: #FF7A7F;   --status-danger-bg: #2E1A1E;
+  --status-warning: #F2B54A;  --status-warning-bg: #2B2415;
+  --status-info: #4DBDFF;     --status-info-bg: #132A40;
+  --status-neutral: #A3ACC2;  --status-neutral-bg: #1D2640;
+  --shadow-card: none;
+  --shadow-pop: 0 8px 24px rgba(0, 0, 0, 0.5);
+}

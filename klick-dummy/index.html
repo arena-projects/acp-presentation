@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Anmelden – Coding Challenges</title>
+  <script>try{var t=JSON.parse(localStorage.getItem("cc.theme"));if(t&&t!=="system")document.documentElement.dataset.theme=t}catch(e){}</script>
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+</head>
+<body data-page="login">
+  <main id="main" class="login-wrap">
+    <div class="card login-card">
+      <span class="brand">
+        <svg viewBox="0 0 32 32" aria-hidden="true"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#009EFF"/><stop offset=".55" stop-color="#624AEF"/><stop offset="1" stop-color="#D743EB"/></linearGradient></defs><path d="M16 2l14 14-14 14L2 16z" fill="url(#g)"/><path d="M16 9.5l6.5 6.5-6.5 6.5-6.5-6.5z" fill="#fff" opacity=".9"/></svg>
+        Coding Challenges
+      </span>
+      <div id="login-notice"></div>
+      <h1>Anmelden</h1>
+      <p class="muted">Im echten System leitet die Plattform hier zum Identity Provider (OIDC) weiter und danach zurück zur
+        aufgerufenen Seite. Im Klick-Dummy wählst du stattdessen, als wer du die Plattform ansehen willst.</p>
+      <form id="login-form">
+        <fieldset class="role-options">
+          <legend>Demo-Rolle</legend>
+          <label class="role-option"><input type="radio" name="role" value="nutzer" checked>
+            <span><strong>Nutzer</strong><span class="small muted">Öffentliche Challenges suchen, ansehen und lösen</span></span></label>
+          <label class="role-option"><input type="radio" name="role" value="autor">
+            <span><strong>Autor</strong><span class="small muted">Wie Nutzer, zusätzlich eigene Challenges anlegen und teilen</span></span></label>
+          <label class="role-option"><input type="radio" name="role" value="gast">
+            <span><strong>Gast über Teilen-Link</strong><span class="small muted">Ohne Anmeldung genau eine geteilte Challenge lösen</span></span></label>
+        </fieldset>
+        <button class="btn btn-primary" type="submit" style="width:100%">Weiter</button>
+      </form>
+      <p class="small" style="margin:var(--space-4) 0 0"><a href="link-ungueltig.html">Ungültigen Teilen-Link aufrufen</a></p>
+    </div>
+  </main>
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hilfe – Coding Challenges</title>
+  <script>try{var t=JSON.parse(localStorage.getItem("cc.theme"));if(t&&t!=="system")document.documentElement.dataset.theme=t}catch(e){}</script>
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+</head>
+<body data-page="hilfe">
+  <div id="site-header"></div>
+  <main id="main" tabindex="-1">
+    <div class="page-head">
+      <div class="page-head-main">
+        <h1>Hilfe</h1>
+        <p class="lead">Alles, was du zum Lösen und Einreichen von Challenges brauchst.</p>
+      </div>
+    </div>
+
+    <div class="help-layout">
+      <nav class="toc" aria-labelledby="toc-title">
+        <h2 id="toc-title" class="toc-title">Auf dieser Seite</h2>
+        <ul>
+          <li><a href="#start">Erste Schritte</a></li>
+          <li><a href="#formate">Lösungsformate</a></li>
+          <li><a href="#vertrag">Lösungsvertrag für Code</a></li>
+          <li><a href="#template">Starter-Template</a></li>
+          <li><a href="#libraries">Erlaubte Libraries</a></li>
+          <li><a href="#push">Einreichen per git push</a></li>
+          <li><a href="#ergebnisse">Ergebnisse verstehen</a></li>
+          <li><a href="#limit">Einreichungs-Limit</a></li>
+        </ul>
+      </nav>
+
+      <div class="prose help-content">
+        <section id="start">
+          <h2>Erste Schritte</h2>
+          <ol>
+            <li>Such dir im Katalog eine Challenge aus und lies die Aufgabe.</li>
+            <li>Löse sie mit deinen eigenen Werkzeugen auf deinem Rechner.</li>
+            <li>Reiche deine Lösung im Tab <strong>Einreichen</strong> der Challenge ein.</li>
+            <li>Die Plattform prüft deine Lösung und zeigt dir das Ergebnis und deinen Lösungsstatus.</li>
+          </ol>
+        </section>
+
+        <section id="formate">
+          <h2>Lösungsformate</h2>
+          <table>
+            <thead><tr><th scope="col">Format</th><th scope="col">Du reichst ein</th><th scope="col">Prüfung</th></tr></thead>
+            <tbody>
+              <tr><td><span class="tag">Wert</span></td><td>einen Lösungswert über ein Formular, z. B. eine Zahl oder einen Text</td><td>sofort; das Ergebnis erscheint direkt unter dem Formular</td></tr>
+              <tr><td><span class="tag">Code</span></td><td>ein Maven-Projekt per <code>git push</code></td><td>die Plattform baut und startet deinen Service und prüft ihn mit Tests; das dauert meist einige Minuten</td></tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section id="vertrag">
+          <h2>Lösungsvertrag für Code</h2>
+          <p>Deine Lösung ist ein HTTP-Service in Java. Damit die Plattform ihn prüfen kann, muss er diese Regeln erfüllen:</p>
+          <table>
+            <tbody>
+              <tr><th scope="row">Java</th><td>Java 21; gebaut wird mit Maven</td></tr>
+              <tr><th scope="row">Build</th><td><code>mvn -o -q package</code> erzeugt genau ein ausführbares JAR unter <code>target/</code>. Der Build läuft ohne Netzwerk.</td></tr>
+              <tr><th scope="row">Start</th><td><code>java -jar &lt;jar&gt;</code>; den Port liest dein Service aus der Umgebungsvariable <code>PORT</code>.</td></tr>
+              <tr><th scope="row">Health-Check</th><td><code>GET /health</code> antwortet innerhalb von 30 Sekunden nach dem Start mit <code>200</code>.</td></tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section id="template">
+          <h2>Starter-Template</h2>
+          <p>Das allgemeine Starter-Template enthält eine passende <code>pom.xml</code> und einen Beispiel-Service, der den Lösungsvertrag
+            erfüllt. Für eine konkrete Challenge nimmst du besser deren Starter-Code: Er enthält zusätzlich die Libraries dieser Challenge.</p>
+          <button class="btn btn-outline" type="button" data-fake-download>
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10.5l5 5 5-5M5 19.5h14"/></svg>Starter-Template (zip)</button>
+        </section>
+
+        <section id="libraries">
+          <h2>Erlaubte Libraries</h2>
+          <p>Jede Challenge legt fest, welche Libraries und Maven-Plugins deine Lösung nutzen darf. Du findest die Liste im Tab
+            <strong>Libraries</strong> der Challenge. Abhängigkeiten dieser Libraries sind automatisch erlaubt.</p>
+          <p>Weil dein Build ohne Netzwerk läuft, schlägt er fehl, wenn deine <code>pom.xml</code> eine andere Library oder ein anderes
+            Plugin verwendet. Die Ergebnisseite nennt dir dann, welche Library nicht erlaubt ist.</p>
+        </section>
+
+        <section id="push">
+          <h2>Einreichen per git push</h2>
+          <p>Die Plattform nimmt deinen Commit per <code>git push</code> entgegen. Sie speichert kein Repository: Deine History bleibt bei dir.</p>
+          <div class="code-block"><pre><code>git remote add submit https://coding-challenges.example/challenges/&lt;challenge-id&gt;.git
+git push submit main</code></pre></div>
+          <p>Als Passwort verwendest du dein <a href="token.html">Push-Token</a>. Git bestätigt die Einreichung mit dem Commit und einem Link zur Ergebnisseite.
+            Reichst du ein, während deine vorherige Einreichung noch geprüft wird, wird diese Prüfung abgebrochen.</p>
+          <h3>Wenn ein Push abgelehnt wird</h3>
+          <table>
+            <thead><tr><th scope="col">Meldung</th><th scope="col">Was du tun kannst</th></tr></thead>
+            <tbody>
+              <tr><td>Ungültiges Push-Token</td><td>Erzeuge ein neues Token und aktualisiere es in deinem Credential-Manager.</td></tr>
+              <tr><td>Einreichungs-Limit erreicht</td><td>Warte bis zur genannten Uhrzeit.</td></tr>
+              <tr><td>Push zu groß</td><td>Jeder Push überträgt die komplette History. Entferne große Dateien aus der History oder reiche aus einem frischen Repository ein.</td></tr>
+              <tr><td>Genau ein Branch pro Push</td><td>Pushe nur einen Branch, z. B. <code>git push submit main</code>.</td></tr>
+              <tr><td>Challenge archiviert oder gesperrt</td><td>Für diese Challenge sind keine Einreichungen mehr möglich.</td></tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section id="ergebnisse">
+          <h2>Ergebnisse verstehen</h2>
+          <table>
+            <thead><tr><th scope="col">Ergebnis</th><th scope="col">Bedeutung</th></tr></thead>
+            <tbody>
+              <tr><td><span class="pill pill-success">Bestanden</span></td><td>Der Wert stimmt bzw. alle Tests sind bestanden.</td></tr>
+              <tr><td><span class="pill pill-danger">Nicht bestanden</span></td><td>Der Wert stimmt nicht bzw. mindestens ein Test ist fehlgeschlagen oder hat zu lange gedauert.</td></tr>
+              <tr><td><span class="pill pill-warning">Fehler</span></td><td>Die Prüfung konnte nicht durchgeführt werden, z. B. wegen eines Build-Fehlers oder weil dein Service nicht startete.</td></tr>
+            </tbody>
+          </table>
+          <p><strong>Öffentliche Tests</strong> zeigen dir bei einem Fehler Request, erwartete und tatsächliche Response.
+            Von <strong>versteckten Tests</strong> siehst du nur Name und Status; für sie gibt es auch kein Service-Log.</p>
+          <p>Dein <strong>Lösungsstatus</strong> richtet sich immer nach deiner neuesten abgeschlossenen Einreichung. Ändert der Autor
+            die Challenge, bleiben deine bisherigen Ergebnisse erhalten; du siehst, zu welcher Version sie gehören.</p>
+        </section>
+
+        <section id="limit">
+          <h2>Einreichungs-Limit</h2>
+          <p>Jede Challenge erlaubt nur eine bestimmte Zahl von Einreichungen pro 15 Minuten. Erreichst du das Limit, sagt dir die
+            Plattform, ab wann du wieder einreichen kannst. Als Gast über einen Teilen-Link gilt zusätzlich ein gemeinsames Limit für alle Gäste dieses Links.</p>
+        </section>
+      </div>
+    </div>
+  </main>
+  <div id="site-footer"></div>
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+  <script>(function () { if (window.CC && !window.CC.halt) window.CC.addCopyButtons(document); })();</script>
+</body>
+</html>
